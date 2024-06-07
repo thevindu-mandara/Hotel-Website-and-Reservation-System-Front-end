@@ -1,0 +1,129 @@
+<section class="vh-100 gradient-custom">
+    <div class="container py-5 h-100">
+        <div class="row justify-content-center align-items-center h-100">
+            <div class="col-12 col-lg-9 col-xl-7">
+                <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                    <div class="card-body p-4 p-md-5">
+                        <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Registration Form</h3>
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6 mb-4">
+                                    <div data-mdb-input-init class="form-outline">
+                                        <input type="text" id="firstName" class="form-control form-control-lg"
+                                            [(ngModel)]="customer.firstName" [ngModelOptions]="{ standalone: true }"
+                                            placeholder="First Name">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <div data-mdb-input-init class="form-outline">
+                                        <input type="text" id="lastName" class="form-control form-control-lg"
+                                            [(ngModel)]="customer.lastName" [ngModelOptions]="{ standalone: true }"
+                                            placeholder="Last Name">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-4 d-flex align-items-center">
+                                    <div data-mdb-input-init class="form-outline datepicker w-100">
+                                        <input type="date" class="form-control form-control-lg" id="birthdayDate"
+                                            [(ngModel)]="customer.dob" [ngModelOptions]="{ standalone: true }"
+                                            placeholder="Date of Birth">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4">
+                                    <h6 class="mb-2 pb-1">Gender: </h6>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                            id="femaleGender" value="Female" [(ngModel)]="customer.gender"
+                                            [ngModelOptions]="{ standalone: true }" />
+                                        <label class="form-check-label" for="femaleGender">Female</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                            id="maleGender" value="Male" [(ngModel)]="customer.gender"
+                                            [ngModelOptions]="{ standalone: true }" />
+                                        <label class="form-check-label" for="maleGender">Male</label>
+                                    </div>
+                                    <div class="form-check form-check-inline">
+                                        <input class="form-check-input" type="radio" name="inlineRadioOptions"
+                                            id="otherGender" value="Other" [(ngModel)]="customer.gender"
+                                            [ngModelOptions]="{ standalone: true }" />
+                                        <label class="form-check-label" for="otherGender">Other</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-4 pb-2">
+                                    <div data-mdb-input-init class="form-outline">
+                                        <input type="email" id="emailAddress" class="form-control form-control-lg"
+                                            [(ngModel)]="customer.email" [ngModelOptions]="{ standalone: true }"
+                                            placeholder="Email">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4 pb-2">
+                                    <div data-mdb-input-init class="form-outline">
+                                        <input type="tel" id="phoneNumber" class="form-control form-control-lg"
+                                            [(ngModel)]="customer.contactNumber" [ngModelOptions]="{ standalone: true }"
+                                            placeholder="Contact No">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-4 pb-2">
+                                    <div data-mdb-input-init class="form-outline">
+                                        <input type="text" id="address" class="form-control form-control-lg"
+                                            [(ngModel)]="customer.address" [ngModelOptions]="{ standalone: true }"
+                                            placeholder="Address">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4 pb-2">
+                                    <div data-mdb-input-init class="form-outline">
+                                        <input type="text" id="nic" class="form-control form-control-lg"
+                                            [(ngModel)]="customer.nic" [ngModelOptions]="{ standalone: true }"
+                                            placeholder="NIC / Passport">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6 mb-4 pb-2">
+                                    <div data-mdb-input-init class="form-outline">
+                                        <input type="password" id="password" class="form-control form-control-lg"
+                                            [(ngModel)]="customer.password" [ngModelOptions]="{ standalone: true }"
+                                            placeholder="Password">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 mb-4 pb-2">
+                                    <div data-mdb-input-init class="form-outline">
+                                        <input type="password" id="confirmPassword" class="form-control form-control-lg"
+                                            [(ngModel)]="customer.confirmPassword"
+                                            [ngModelOptions]="{ standalone: true }" placeholder="Confirm Password"
+                                            (blur)="validatePassword()">
+                                    </div>
+                                    <div *ngIf="passwordsMatch === false" class="text-danger">Passwords do not match.
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center">
+                                <input data-mdb-ripple-init class="btn btn-outline-danger custom-btn"
+                                    (click)="validateSubmit()" type="button" value="Sign Up" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="toast-container">
+    <div class="toast align-items-center text-bg-danger border-0" id="toast-web" role="alert" aria-live="assertive"
+        aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+                Please fill in all fields correctly.
+            </div>
+            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"
+                aria-label="Close"></button>
+        </div>
+    </div>
+</div>
